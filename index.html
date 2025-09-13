@@ -11,66 +11,311 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
         }
-        a { text-decoration: none; color: inherit; }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
 
         /* Container */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         /* Header */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 80px;
+            position: relative;
         }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #000 0%, #666 100%);
+            border-radius: 2px;
+        }
+
         header h1 {
-            font-size: 2.5rem;
-            color: #1f2937;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #000;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out;
         }
+
         header h2 {
-            font-size: 1.2rem;
-            color: #4b5563;
-            margin-top: 10px;
+            font-size: 1.4rem;
+            color: #444;
+            margin-bottom: 25px;
             font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         /* Sections */
         section {
             background: #fff;
-            padding: 25px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        section h3 {
-            color: #1f2937;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 5px;
-        }
-        ul {
-            list-style: disc inside;
-        }
-        li {
-            margin-bottom: 10px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #000 0%, #666 50%, #000 100%);
+        }
+
+        section h3 {
+            color: #000;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        li strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #000;
+            color: #fff;
+        }
+
+        .contact-section h3 {
+            color: #fff;
+        }
+
+        .contact-section h3::before {
+            background: #fff;
+        }
+
+        .contact-section::before {
+            background: linear-gradient(90deg, #666 0%, #fff 50%, #666 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 25px;
+            border: 2px solid #333;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-item:hover {
+            border-color: #666;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: #fff;
+        }
+
+        .contact-item a:hover {
+            color: #ccc;
+        }
+
+        /* About section styling */
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            padding-left: 30px;
+            border-left: 4px solid #000;
+            margin-left: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animation for sections */
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+
         /* Responsive */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            section { padding: 20px; }
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 15px;
+            }
+
+            header {
+                margin-bottom: 50px;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .about-text {
+                padding-left: 20px;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-item {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #000 0%, #666 100%);
+            width: 0%;
+            transition: width 0.1s ease;
         }
     </style>
 </head>
 <body>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
 
     <div class="container">
         <header>
@@ -92,21 +337,86 @@
         <section>
             <h3>Δεξιότητες & Ενδιαφέροντα</h3>
             <ul>
-                <li>Troubleshooting υπολογιστών και συσκευών</li>
-                <li>Διαχείριση Windows & Linux</li>
-                <li>Basic networking & ασφαλή Wi-Fi δίκτυα</li>
-                <li>Αυτοματοποίηση & scripting</li>
-                <li>Βασικές αρχές ασφάλειας υπολογιστών</li>
+                <li><strong>Troubleshooting:</strong> Υπολογιστών και συσκευών με εξειδικευμένες τεχνικές</li>
+                <li><strong>Διαχείριση Συστημάτων:</strong> Windows & Linux administration</li>
+                <li><strong>Δικτυακές Τεχνολογίες:</strong> Basic networking & ασφαλή Wi-Fi δίκτυα</li>
+                <li><strong>Αυτοματοποίηση:</strong> Scripting & automation solutions</li>
+                <li><strong>Κυβερνοασφάλεια:</strong> Βασικές αρχές ασφάλειας υπολογιστών</li>
+                <li><strong>Web Development:</strong> Modern web technologies & frameworks</li>
             </ul>
         </section>
 
         <section>
             <h3>Σχετικά με Εμένα</h3>
-            <p>Μου αρέσει να πειραματίζομαι με εφαρμογές, αυτοματισμούς και προσωπικά projects που συνδυάζουν IT, web development και καθημερινή τεχνολογία. Στόχος μου είναι να εξελίσσομαι συνεχώς, να μαθαίνω νέα πράγματα και να βελτιώνω τις δεξιότητές μου μέσα από κάθε πρόκληση και project.</p>
+            <p class="about-text">
+                Ως IT helpdesk intern, πειραματίζομαι με εφαρμογές, αυτοματισμούς και προσωπικά projects που συνδυάζουν IT, web development και καθημερινή τεχνολογία. Στόχος μου είναι να συνδυάζω γνώση με πρακτική εφαρμογή, παρέχοντας λύσεις που κάνουν την τεχνολογία πιο λειτουργική και προσιτή για όλους.
+            </p>
+        </section>
+
+        <section class="contact-section">
+            <h3>Επικοινωνία</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:theodoros.filimonov@email.com">theodoros.filimonov@email.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-label">Τηλέφωνο</div>
+                    <div class="contact-value">
+                        <a href="tel:+306912345678">+30 691 234 5678</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💼</span>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">
+                        <a href="https://linkedin.com/in/theodoros-filimonov" target="_blank">theodoros-filimonov</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🐙</span>
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">
+                        <a href="https://github.com/theofilimonov" target="_blank">theofilimonov</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Add smooth scrolling behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.style.animationFillMode = 'both';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
-
-
